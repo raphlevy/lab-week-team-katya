@@ -7,6 +7,7 @@ feature 'Adding tags' do
 	end
 
   before(:each) do
+    Task.create(task_name: 'Make dinner', date: '2050-08-22', tags: [Tag.first_or_create(name: 'home food')])
     Task.create(task_name: 'Washing machine', date: '2040-08-22', tags: [Tag.first_or_create(name: 'home')])
     Task.create(task_name: 'Play table tennis', date: '2050-08-22', tags: [Tag.first_or_create(name: 'sport')])
   end
@@ -18,5 +19,11 @@ feature 'Adding tags' do
       expect(page).not_to have_content('Play table tennis')
     end
   end
+
+  scenario 'I can add multiple tags to a new task' do 
+    visit '/tasks/new'
+    task = Task.first
+    expect(task.tags.map(&:name)).to include('home','food')
+  end 
 
 end
