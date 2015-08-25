@@ -3,13 +3,14 @@ feature 'Adding tags' do
 		visit '/tasks/new'
 		click_button 'Create task'
 		task = Task.first
-		expect(task.tags.map(&:name).join(',')).to include('home')
+		expect(task.tags.map(&:name).join(', ')).to include('home')
 	end
 
   before(:each) do
-    Task.create(task_name: 'Make dinner', date: '2050-08-22', tags: [Tag.first_or_create(name: 'home food')])
-    Task.create(task_name: 'Washing machine', date: '2040-08-22', tags: [Tag.first_or_create(name: 'home')])
-    Task.create(task_name: 'Play table tennis', date: '2050-08-22', tags: [Tag.first_or_create(name: 'sport')])
+    user = create :user
+    user.tasks.create(task_name: 'Make dinner', date: '2050-08-22', tags: [Tag.first_or_create(name: 'home food')])
+    user.tasks.create(task_name: 'Washing machine', date: '2040-08-22', tags: [Tag.first_or_create(name: 'home')])
+    user.tasks.create(task_name: 'Play table tennis', date: '2050-08-22', tags: [Tag.first_or_create(name: 'sport')])
   end
 
   scenario 'I can filter tasks by tag' do
@@ -23,7 +24,7 @@ feature 'Adding tags' do
   scenario 'I can add multiple tags to a new task' do
     visit '/tasks/new'
     task = Task.first
-    expect(task.tags.map(&:name).join(',')).to include('home','food')
+    expect(task.tags.map(&:name).join(', ')).to include('home','food')
   end
 
 end

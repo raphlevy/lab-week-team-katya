@@ -9,4 +9,6 @@ class Task
   property :date, Date
 
   has n, :tags, through: Resource
+  belongs_to :user
+
 end

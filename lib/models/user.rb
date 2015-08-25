@@ -18,6 +18,7 @@ class User
   property :password_token, Text
   property :name, Text
 
+  has n, :tasks
 
   def password=(password)
     @password = password
