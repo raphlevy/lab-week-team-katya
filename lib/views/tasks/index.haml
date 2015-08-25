@@ -6,6 +6,6 @@
       %br
       Due Date: #{task.date}
       %br
-      Tags: #{task.tags}
+      Tags: #{task.tags.map(&:name).join()}
 %a{:href => "/tasks/new"} Add new task
 
