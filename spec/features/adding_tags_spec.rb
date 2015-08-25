@@ -3,7 +3,7 @@ feature 'Adding tags' do
 		visit '/tasks/new'
 		click_button 'Create task'
 		task = Task.first
-		expect(task.tags.map(&:name)).to include('home')
+		expect(task.tags.map(&:name).join(',')).to include('home')
 	end
 
   before(:each) do
@@ -20,10 +20,10 @@ feature 'Adding tags' do
     end
   end
 
-  scenario 'I can add multiple tags to a new task' do 
+  scenario 'I can add multiple tags to a new task' do
     visit '/tasks/new'
     task = Task.first
-    expect(task.tags.map(&:name)).to include('home','food')
-  end 
+    expect(task.tags.map(&:name).join(',')).to include('home','food')
+  end
 
 end
