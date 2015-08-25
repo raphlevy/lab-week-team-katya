@@ -9,18 +9,18 @@ module VirtualAssistant
         haml :'tasks/index'
       end
 
-      get '/tasks/new' do 
+      get '/tasks/new' do
         haml :'tasks/new'
-      end 
+      end
 
-      post '/tasks' do 
+      post '/tasks' do
         @task = Task.create(task_name: params[:task_name],
                           date: params[:date])
-        # tag = Tag.create(name: params[:tag])
-        # task.tags << tag
-        # task.save
+        @tag = Tag.create(name: params[:tag])
+        @task.tags << @tag
+        @task.save
         redirect to '/tasks'
-      end 
+      end
 
 
     end
