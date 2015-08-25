@@ -16,8 +16,13 @@ module VirtualAssistant
       post '/tasks' do 
         @task = Task.create(task_name: params[:task_name],
                           date: params[:date])
+        # tag = Tag.create(name: params[:tag])
+        # task.tags << tag
+        # task.save
         redirect to '/tasks'
       end 
+
+
     end
   end
 end

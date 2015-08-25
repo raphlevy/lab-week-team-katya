@@ -2,9 +2,10 @@
 %ul#tasks
   - @tasks.each do |task|
     %li
-      Task: #{task.task_name}
+      #{task.task_name}
       %br
       Due Date: #{task.date}
+      %br
+      Tags: #{task.tags}
 %a{:href => "/tasks/new"} Add new task
-
 

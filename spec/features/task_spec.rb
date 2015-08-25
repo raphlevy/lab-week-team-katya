@@ -5,7 +5,7 @@ feature 'View a task' do
     visit '/tasks'
     expect(page.status_code).to eq 200
     within 'ul#tasks' do
-      expect(page).to have_content('Task: Make dinner')
+      expect(page).to have_content('Make dinner')
     end
   end
 end
@@ -19,7 +19,7 @@ feature 'Creating tasks' do
 
 		expect(current_path).to eq '/tasks'
 		within 'ul#tasks' do
-			expect(page).to have_content('Task: Make dinner')
+			expect(page).to have_content('Make dinner')
 		end 
 	end 
 end 

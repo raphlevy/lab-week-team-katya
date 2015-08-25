@@ -1,13 +1,13 @@
 %h1 Create a new task:
-
 %form{:action => "/tasks", :method => "post"}
-  %p Task name:
+  Task name:
   %input{:name => "task_name", :type => "text"}
-    %p Date:
-    %input{:name => "date", :type => "date"}
-      %br
-        %input{:type => "submit", :value => "Create task"}
-        
-
-
+    %br
+      Date:
+      %input{:name => "date", :type => "date"}
+        %br
+          Tags:
+          %input{:name => "tag", :type => "text"}
+            %br
+              %input{:type => "submit", :value => "Create task"}
 

@@ -8,5 +8,5 @@ class Task
   property :task_name, String
   property :date, Date
 
-
+  has n, :tags, through: Resource
 end
