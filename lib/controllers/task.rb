@@ -9,28 +9,15 @@ module VirtualAssistant
         haml :'tasks/index'
       end
 
+      get '/tasks/new' do 
+        haml :'tasks/new'
+      end 
 
-
-      # get '/users/new' do
-      #   @user = User.new
-      #   haml :'users/new'
-      # end
-
-      # post '/users' do
-      #   # byebug
-      #   @user = User.create(email: params[:email],
-      #                       password: params[:password],
-      #                       password_confirmation: params[:password_confirmation],
-      #                       name: params[:name])
-      #   if @user.save
-      #     session[:user_id] = @user.id
-      #     redirect to('/')
-      #   else
-      #     flash.now[:errors] = @user.errors.full_messages
-      #     haml :'users/new'
-      #   end
-      # end
-
+      post '/tasks' do 
+        @task = Task.create(task_name: params[:task_name],
+                          date: params[:date])
+        redirect to '/tasks'
+      end 
     end
   end
 end
