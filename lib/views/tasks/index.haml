@@ -1,0 +1,6 @@
+%h1 Tasks
+%ul#tasks
+  - @tasks.each do |task|
+    %li
+      Task: #{task.task_name}
+      Due Date:   #{task.date}

@@ -4,6 +4,7 @@ require_relative 'data_mapper_setup'
 require_relative 'controllers/base'
 require_relative 'controllers/user'
 require_relative 'controllers/session'
+require_relative 'controllers/task'
 require './lib/helpers/app_helpers'
 
 
@@ -23,6 +24,7 @@ module VirtualAssistant
 
     use Routes::UserController
     use Routes::SessionController
+    use Routes::TaskController
 
 
     run! if app_file == $0
